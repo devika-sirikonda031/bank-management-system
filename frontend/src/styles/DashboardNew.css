@@ -1,0 +1,114 @@
+/* ===== DASHBOARD CLEAN UI ===== */
+
+/* BODY */
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #c0c6d2, #6f95d3);
+}
+/* MAIN */
+.main {
+  margin-left: 230px;
+  padding: 30px;
+}
+
+/* HEADER */
+.header-card {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  padding: 25px;
+  border-radius: 16px;
+  margin-bottom: 25px;
+  color: white;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+/* 💎 CENTER CARD */
+.center-card {
+  width: 400px;
+  margin: auto;
+  padding: 30px;
+  border-radius: 18px;
+
+  background: rgba(210, 207, 207, 0.08);
+  backdrop-filter: blur(15px);
+
+  text-align: center;
+  color: white;
+
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+}
+
+/* BALANCE */
+.center-card h4 {
+  opacity: 0.8;
+}
+
+.center-card h1 {
+  font-size: 38px;
+  margin: 15px 0;
+  color: #f1f5f9;
+}
+
+/* INPUT */
+.center-card input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+
+  background: rgba(255,255,255,0.2);
+  color: white;
+  text-align: center;
+}
+
+.center-card input::placeholder {
+  color: rgba(255,255,255,0.7);
+}
+
+/* BUTTONS */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.deposit {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  border: none;
+  padding: 12px 25px;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.withdraw {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  border: none;
+  padding: 12px 25px;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.deposit:hover,
+.withdraw:hover {
+  transform: scale(1.05);
+}
+
+.btn-group button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* COLORS */
+.center-card {
+  border: 1px solid rgba(255,255,255,0.1);
+}
+

@@ -1,0 +1,109 @@
+.account-page {
+  flex: 1;
+  padding: 30px;
+  background: linear-gradient(135deg, #0f172a, #334155);
+  min-height: 100vh;
+  color: white;
+}
+
+/* CENTER CONTAINER */
+.account-container {
+  max-width: 500px;
+  margin: auto;
+}
+
+/* ACCOUNT CARD */
+.account-card {
+  background: linear-gradient(135deg, #1e293b, #334155);
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+.acc-number {
+  color: #94a3b8;
+  margin: 10px 0;
+}
+
+.balance {
+  color: white;
+  font-size: 32px;
+}
+
+/* ACTION BOX */
+.action-box {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.action-box input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 15px;
+}
+
+/* BUTTON GROUP */
+.btn-group {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-group button {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+/* BUTTON COLORS */
+.deposit-btn {
+  background: #22c55e;
+  color: white;
+}
+
+.withdraw-btn {
+  background: #ef4444;
+  color: white;
+}
+
+.history-btn {
+  background: #3b82f6;
+  color: white;
+}
+
+/* HISTORY BOX */
+.history-box {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+/* TABLE */
+table {
+  width: 100%;
+  margin-top: 10px;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  text-align: center;
+}
+
+.green {
+  color: #22c55e;
+}
+
+.red {
+  color: #ef4444;
+}
+.acc-number {
+  color: #e2e8f0;
+}

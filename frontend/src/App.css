@@ -1,0 +1,126 @@
+/* RESET */
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* LANDING PAGE */
+.landing {
+  height: 100vh;
+  background: linear-gradient(135deg, #0f172a, #334155);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+/* MAIN BOX */
+.content {
+  width: 85%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255,255,255,0.05);
+  border-radius: 20px;
+  padding: 40px;
+  backdrop-filter: blur(10px);
+}
+
+/* LEFT */
+.left {
+  max-width: 500px;
+}
+
+.left h2 {
+  font-size: 40px;
+}
+
+.left p {
+  color: #94a3b8;
+}
+
+/* BUTTON */
+.left button {
+  margin-top: 20px;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #22c55e, #3b82f6);
+  color: white;
+  cursor: pointer;
+}
+
+/* RIGHT IMAGE */
+.right img {
+  width: 350px;
+}
+
+/* OVERLAY */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* POPUP CARD */
+.choice-card {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  width: 300px;
+}
+
+/* POPUP BUTTONS */
+.choice-card button {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #3b82f6;
+  color: white;
+}
+
+/* ✅ ACCESS / LOGIN / SIGNUP */
+.auth-container {
+  height: 100vh;
+  background: linear-gradient(135deg, #0f172a, #334155);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-card {
+  width: 350px;
+  padding: 30px;
+  border-radius: 15px;
+  background: white;
+  text-align: center;
+}
+
+/* INPUT */
+.auth-card input {
+  width: 100%;
+  margin: 15px 0;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* BUTTON */
+.auth-card button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
