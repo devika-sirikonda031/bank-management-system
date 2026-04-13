@@ -1,9 +1,11 @@
 import mysql.connector
 
-def connect_db():
-    return mysql.connector.connect(
-        host="127.0.0.1",
-        user="root",
-        password="root@123",
-        database="bank_db"
-    )
+conn = mysql.connector.connect(
+    host="centerbeam.proxy.rlwy.net",
+    user="root",
+    password="kJobbDlidqnLkIrzheImKBNqkynImCYM",
+    database="railway",
+    port=34503
+)
+
+cursor = conn.cursor()

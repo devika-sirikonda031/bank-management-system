@@ -3,19 +3,25 @@ from flask_cors import CORS
 import mysql.connector
 import random
 import string
+from urllib.parse import urlparse
 
 app = Flask(__name__)
 CORS(app)
 
 # ==============================
-# 🔗 DB CONNECTION (FIXED)
+# 🔗 RAILWAY DB CONNECTION
 # ==============================
+DATABASE_URL = "mysql://root:kJobbDlidqnLkIrzheImKBNqkynImCYM@centerbeam.proxy.rlwy.net:34503/railway"
+
 def get_db():
+    url = urlparse(DATABASE_URL)
+
     return mysql.connector.connect(
-        host="localhost",   # ✅ FIXED (was loacalhost ❌)
-        user="root",
-        password="root@123",   # change if needed
-        database="bank_db"
+        host=url.hostname,
+        user=url.username,
+        password=url.password,
+        database=url.path.replace("/", ""),
+        port=url.port
     )
 
 # ==============================
@@ -39,7 +45,6 @@ def generate_ifsc():
 def create_account():
     try:
         data = request.json
-        print("CREATE ACCOUNT HIT:", data)  # ✅ debug
 
         conn = get_db()
         cursor = conn.cursor()
@@ -77,7 +82,6 @@ def create_account():
         })
 
     except Exception as e:
-        print("ERROR:", e)
         return jsonify({"status": "error", "message": str(e)})
 
 # ==============================
@@ -107,7 +111,6 @@ def access_account():
             return jsonify({"status": "error", "message": "Invalid login"})
 
     except Exception as e:
-        print("ERROR:", e)
         return jsonify({"status": "error", "message": str(e)})
 
 # ==============================
@@ -144,7 +147,6 @@ def deposit():
         return jsonify({"status": "success", "balance": balance})
 
     except Exception as e:
-        print("ERROR:", e)
         return jsonify({"status": "error", "message": str(e)})
 
 # ==============================
@@ -186,7 +188,6 @@ def withdraw():
         return jsonify({"status": "success", "balance": new_balance})
 
     except Exception as e:
-        print("ERROR:", e)
         return jsonify({"status": "error", "message": str(e)})
 
 # ==============================
@@ -211,7 +212,6 @@ def transactions(user_id):
         return jsonify(data)
 
     except Exception as e:
-        print("ERROR:", e)
         return jsonify([])
 
 # ==============================
