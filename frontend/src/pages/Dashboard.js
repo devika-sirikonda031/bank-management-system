@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import "../styles/DashboardNew.css";
 
+// ✅ IMPORTANT: same backend URL everywhere
+const BASE_URL = "https://bank-management-system-b33i.onrender.com";
+
 function Dashboard() {
   const user = JSON.parse(localStorage.getItem("user"));
   const user_id = user?.id;
@@ -10,12 +13,19 @@ function Dashboard() {
   const [amount, setAmount] = useState("");
   const [displayBalance, setDisplayBalance] = useState(0);
 
+  // 🔄 Load balance
   const loadData = async () => {
-    const res = await fetch(`http://127.0.0.1:5000/transactions/${user_id}`);
-    const data = await res.json();
+    try {
+      const res = await fetch(`${BASE_URL}/transactions/${user_id}`);
+      const data = await res.json();
 
-    if (data.length > 0) {
-      setBalance(data[0].balance_after);
+      if (data.length > 0) {
+        setBalance(data[0].balance_after);
+      } else {
+        setBalance(0);
+      }
+    } catch (err) {
+      console.log("Error loading data:", err);
     }
   };
 
@@ -37,53 +47,73 @@ function Dashboard() {
         setDisplayBalance(start);
       }
     }, 20);
+
+    return () => clearInterval(interval);
   }, [balance]);
 
+  // 💰 Deposit
   const deposit = async () => {
-    if (!amount || amount <= 0) {
+    if (!amount || Number(amount) <= 0) {
       alert("Enter valid amount ❌");
       return;
     }
 
-    const res = await fetch("http://127.0.0.1:5000/deposit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ user_id, amount })
-    });
+    try {
+      const res = await fetch(`${BASE_URL}/deposit`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          user_id: Number(user_id),
+          amount: Number(amount)
+        })
+      });
 
-    const data = await res.json();
+      const data = await res.json();
 
-    if (data.status === "success") {
-      alert("Deposit Successful ✅");
-      setBalance(data.balance);
-      setAmount("");
+      if (data.status === "success") {
+        alert("Deposit Successful ✅");
+        setBalance(data.balance);
+        setAmount("");
+      } else {
+        alert(data.message);
+      }
+    } catch (err) {
+      alert("Server error ❌");
     }
   };
 
+  // 💸 Withdraw
   const withdraw = async () => {
-    if (!amount || amount <= 0) {
+    if (!amount || Number(amount) <= 0) {
       alert("Enter valid amount ❌");
       return;
     }
 
-    const res = await fetch("http://127.0.0.1:5000/withdraw", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ user_id, amount })
-    });
+    try {
+      const res = await fetch(`${BASE_URL}/withdraw`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          user_id: Number(user_id),
+          amount: Number(amount)
+        })
+      });
 
-    const data = await res.json();
+      const data = await res.json();
 
-    if (data.status === "error") {
-      alert(data.message);
-    } else {
-      alert("Withdraw Successful ✅");
-      setBalance(data.balance);
-      setAmount("");
+      if (data.status === "error") {
+        alert(data.message);
+      } else {
+        alert("Withdraw Successful ✅");
+        setBalance(data.balance);
+        setAmount("");
+      }
+    } catch (err) {
+      alert("Server error ❌");
     }
   };
 
@@ -99,7 +129,7 @@ function Dashboard() {
           <p>Account No: {user?.account_number}</p>
         </div>
 
-        {/* CENTER CARD */}
+        {/* CENTER */}
         <div className="center-card">
 
           <h4>Current Balance</h4>

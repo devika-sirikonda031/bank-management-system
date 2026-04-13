@@ -1,98 +1,84 @@
-/* BACKGROUND */
-body {
-  margin: 0;
-  font-family: "Segoe UI", sans-serif;
-  background: linear-gradient(135deg, #0f172a, #1e293b);
+.transactions-page {
+  display: flex;
 }
 
-/* HEADER */
-.header-card {
-  background: linear-gradient(135deg, #2563eb, #1e40af);
-  padding: 25px;
-  border-radius: 16px;
-  margin-bottom: 20px;
+.main {
+  flex: 1;
+  padding: 20px;
   color: white;
 }
 
-/* CONTROLS */
-.controls {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 20px;
-}
-
-.controls input,
-.controls select {
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
-  outline: none;
-}
-
-/* TABLE CONTAINER */
-.transactions-container {
-  background: white;
-  border-radius: 16px;
+.header-card {
+  background: linear-gradient(to right, #1e3c72, #2a5298);
   padding: 20px;
-}
-
-/* HEADER */
-.table-header {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1.5fr;
-  font-weight: bold;
-  padding: 10px 0;
-  border-bottom: 2px solid #e2e8f0;
-}
-
-/* ROW */
-.transaction-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1.5fr;
-  padding: 14px 0;
-  border-bottom: 1px solid #e2e8f0;
-}
-
-/* HOVER */
-.transaction-row:hover {
-  background: #f1f5f9;
-  border-radius: 8px;
-}
-
-/* COLORS */
-.green {
-  color: #16a34a;
-  font-weight: bold;
-}
-
-.red {
-  color: #dc2626;
-  font-weight: bold;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
 .summary-card {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
-  padding: 20px;
-  border-radius: 12px;
+  background: #1c1f2b;
+  padding: 15px;
+  border-radius: 10px;
   margin-bottom: 20px;
-
-  color: white;   /* 🔥 MAIN FIX */
-
-  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
 }
 
-.summary-card h3 {
-  margin-bottom: 10px;
-  font-weight: 600;
+.download-btn {
+  background: #00c6ff;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 15px;
 }
 
-.summary-card p {
-  margin: 5px 0;
-  font-size: 15px;
-  color: #e2e8f0;   /* soft white */
+.download-btn:hover {
+  background: #0072ff;
 }
-.summary-card p span {
-  font-weight: bold;
-  color: #22c55e;
+
+.transaction-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #111827;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.transaction-table th,
+.transaction-table td {
+  padding: 12px;
+  text-align: center;
+}
+
+.transaction-table th {
+  background: #374151;
+}
+
+.transaction-table tr:nth-child(even) {
+  background: #1f2937;
+}
+
+.transaction-table tr:hover {
+  background: #374151;
+}
+
+/* PAGINATION */
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.pagination button {
+  padding: 8px 16px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  background: #1d4ed8;
 }
