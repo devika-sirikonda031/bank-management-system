@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Access.css";
 
+const BASE_URL = "https://bank-management-system-b33i.onrender.com";
+
 function Access() {
   const navigate = useNavigate();
 
@@ -15,21 +17,25 @@ function Access() {
   };
 
   const handleSubmit = async () => {
-    const res = await fetch("http://127.0.0.1:5000/access-account", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(form)
-    });
+    try {
+      const res = await fetch(`${BASE_URL}/access-account`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(form)
+      });
 
-    const data = await res.json();
+      const data = await res.json();
 
-    if (data.status === "success") {
-      localStorage.setItem("user", JSON.stringify(data.user));
-      navigate("/dashboard");
-    } else {
-      alert(data.message);
+      if (data.status === "success") {
+        localStorage.setItem("user", JSON.stringify(data.user));
+        navigate("/dashboard");
+      } else {
+        alert(data.message);
+      }
+    } catch (error) {
+      alert("Server not working ❌");
     }
   };
 

@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/CreateAccount.css";
 
+const BASE_URL = "https://bank-management-system-b33i.onrender.com";
+
 function CreateAccount() {
   const navigate = useNavigate();
 
@@ -21,9 +23,7 @@ function CreateAccount() {
 
   const handleSubmit = async () => {
     try {
-      console.log("Sending Data:", form);
-
-      const res = await fetch("http://127.0.0.1:5000/create-account", {
+      const res = await fetch(`${BASE_URL}/create-account`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -32,26 +32,21 @@ function CreateAccount() {
       });
 
       const data = await res.json();
-      console.log("Response:", data);
 
       if (data.status === "success") {
-        // ✅ Save data in localStorage
         localStorage.setItem("account_number", data.account_number);
         localStorage.setItem("ifsc", data.ifsc);
 
-        // ✅ Show alert
         alert(
           `Account Created Successfully ✅\n\nAccount Number: ${data.account_number}\nIFSC: ${data.ifsc}`
         );
 
-        // ✅ Redirect to dashboard
         navigate("/dashboard");
       } else {
-        alert("Error: " + data.message);
+        alert(data.message);
       }
     } catch (error) {
-      console.error("Error:", error);
-      alert("Server not working ❌ Check Flask");
+      alert("Server not working ❌");
     }
   };
 
@@ -62,12 +57,7 @@ function CreateAccount() {
 
         <input name="name" placeholder="Full Name" onChange={handleChange} />
         <input name="email" placeholder="Email" onChange={handleChange} />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          onChange={handleChange}
-        />
+        <input type="password" name="password" placeholder="Password" onChange={handleChange} />
         <input name="aadhaar" placeholder="Aadhaar Number" onChange={handleChange} />
         <input name="mobile" placeholder="Mobile Number" onChange={handleChange} />
         <input name="age" placeholder="Age" onChange={handleChange} />
